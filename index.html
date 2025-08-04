@@ -1,125 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenneth Liu - Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        header {
-            background-color: #222;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 20px;
-        }
-        h2 {
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 5px;
-            margin-top: 40px;
-        }
-        .project {
-            background: white;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 8px;
-            box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-        }
-        /* Smaller image */
-        .project img, .project iframe {
-            max-width: 500px;
-            width: 100%;
-            border-radius: 8px;
-            margin: 10px auto;
-            display: block;
-        }
-        footer {
-            background-color: #222;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
-        }
-        .resume-link {
-            display: inline-block;
-            padding: 10px 15px;
-            background: #0077cc;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            margin-top: 10px;
-        }
-        .resume-link:hover {
-            background: #005fa3;
-        }
-        details {
-            margin-top: 10px;
-            background: #f8f8f8;
-            padding: 10px;
-            border-radius: 6px;
-        }
-        summary {
-            cursor: pointer;
-            font-weight: bold;
-        }
-        pre {
-            overflow-x: auto;
-            background: #1e1e1e;
-            color: #dcdcdc;
-            padding: 10px;
-            border-radius: 6px;
-            white-space: pre-wrap;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenneth Liu - Portfolio</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #e0e0e0;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        text-align: center;
+        padding: 50px 20px 20px;
+    }
+    header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+    nav a {
+        color: #00bcd4;
+        text-decoration: none;
+        margin: 0 15px;
+    }
+    nav a:hover {
+        text-decoration: underline;
+    }
+    section {
+        max-width: 1000px;
+        margin: auto;
+        padding: 40px 20px;
+    }
+    .dark-section {
+        background-color: #121212;
+    }
+    .light-section {
+        background-color: #1a1a1a;
+    }
+    .about {
+        text-align: center;
+    }
+    .about p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 40px;
+    }
+    .two-columns {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+    .column {
+        flex: 1;
+        min-width: 250px;
+        padding: 10px 20px;
+    }
+    h3 {
+        color: #00bcd4;
+    }
+    ul {
+        list-style: disc;
+        padding-left: 20px;
+    }
+    .icons {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .icons a {
+        display: inline-block;
+        margin: 0 10px;
+    }
+    .icons img {
+        width: 40px;
+        height: 40px;
+        filter: invert(1);
+    }
+    .project {
+        background: #1e1e1e;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+    .project img {
+        max-width: 500px;
+        width: 100%;
+        margin: 10px auto;
+        display: block;
+        border-radius: 8px;
+    }
+    details {
+        background: #1a1a1a;
+        padding: 10px;
+        border-radius: 6px;
+        margin-top: 15px;
+    }
+    summary {
+        cursor: pointer;
+        font-weight: bold;
+        color: #00bcd4;
+    }
+    pre {
+        overflow-x: auto;
+        background: #000;
+        color: #dcdcdc;
+        padding: 10px;
+        border-radius: 6px;
+        white-space: pre-wrap;
+        font-size: 0.9rem;
+    }
+    .contact {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    .contact a {
+        color: #00bcd4;
+        text-decoration: none;
+    }
+    .contact a:hover {
+        text-decoration: underline;
+    }
+    footer {
+        text-align: center;
+        padding: 20px;
+        color: #777;
+        font-size: 0.9rem;
+    }
+</style>
 </head>
 <body>
 
 <header>
     <h1>Kenneth Liu</h1>
-    <p>Mechanical Engineer | Data Enthusiast | Innovator</p>
     <nav>
+        <a href="#about">About</a>
         <a href="#work">Work Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#resume">Resume</a>
         <a href="#contact">Contact</a>
     </nav>
 </header>
 
-<div class="container">
+<section id="about" class="about dark-section">
+    <h2>About Me</h2>
+    <p>I am a recent graduate from the University of Southern California with dual Master’s degrees in Mechanical Engineering and Engineering Management, and a Bachelor’s degree in Mechanical Engineering from NYU. My experience spans mechanical design, CAD modeling, manufacturing processes, and motion tracking research for soft robotics. I have applied my skills in both industry and research settings, including an internship at Wabtec Corporation and hands-on robotics design for international competitions. I am passionate about robotics, manufacturing innovation, and aerospace applications, with a strong interest in bringing ideas from concept to production. I am currently seeking full-time engineering opportunities where I can contribute my expertise and continue to grow professionally. Feel free to reach out for collaboration or professional opportunities.</p>
+    
+    <div class="two-columns">
+        <div class="column">
+            <h3>Interests</h3>
+            <ul>
+                <li>Robotics & Automation</li>
+                <li>Manufacturing Innovation</li>
+                <li>Mechanical Design & CAD Modeling</li>
+                <li>Structural FEA Analysis</li>
+                <li>Product Development & Prototyping</li>
+            </ul>
+        </div>
+        <div class="column">
+            <h3>Education</h3>
+            <ul>
+                <li>USC, M.S. Mechanical Engineering (2023–2025)</li>
+                <li>USC, M.S. Engineering Management (2023–2025)</li>
+                <li>NYU, B.S. Mechanical Engineering (2019–2023)</li>
+            </ul>
+        </div>
+    </div>
 
-<section id="work">
+    <div class="icons">
+        <a href="resume.pdf" target="_blank"><img src="resume-icon.png" alt="Resume"></a>
+        <a href="https://www.linkedin.com/in/kenneth-liu28/" target="_blank"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+    </div>
+</section>
+
+<section id="work" class="light-section">
     <h2>Work Experience</h2>
 
-    <!-- Soft Robotics Research -->
     <div class="project">
-        <h3>Graduate Research Assistant – USC Zhao Research Group, Department of Aerospace and Mechanical Engineering</h3>
-        <p><strong>Dates:</strong> Sep 2023 – May 2025</p>
+        <h3>Graduate Research Assistant – USC Zhao Research Group</h3>
         <ul>
             <li>Assisted a professor on a soft robotics project by developing a Python-based marker motion tracking system.</li>
-            <li>Developed and deployed machine learning algorithms to improve motion tracking accuracy, automated manual processes, and enhanced overall system efficiency.</li>
-            <li>Coordinated task schedules, project progress presentations, and publications to ensure timely deliverables.</li>
-            <li>Streamlined motion tracking workflow, reduced processing time by over 2 hours, enhanced accuracy by 95%.</li>
-            <li>Refined and tested an OpenCV-based motion tracking system, achieved sub-millimeter precision of 0.01 mm.</li>
+            <li>Developed and deployed machine learning algorithms to improve motion tracking accuracy, automate processes, and enhance efficiency.</li>
+            <li>Coordinated schedules, presentations, and publications for timely deliverables.</li>
+            <li>Streamlined motion tracking workflow, reduced processing time by over 2 hours, improved accuracy by 95%.</li>
+            <li>Refined and tested OpenCV-based motion tracking system, achieving 0.01 mm precision.</li>
         </ul>
         <p><a href="https://www.liebertpub.com/doi/10.1089/soro.2024.0158" target="_blank">📄 Read Research Paper</a></p>
-        <img src="soft_robotics.jpg" alt="Soft Robotics Marker Tracking Setup">
+        <img src="soft_robotics.jpg" alt="Soft Robotics Marker Tracking">
 
         <details>
             <summary>📜 View Marker Tracking Python Code</summary>
@@ -225,46 +292,41 @@ def main():
 
 if __name__ == "__main__":
     main()
-            </code></pre>
+           </code></pre>
         </details>
     </div>
 
-    <!-- Wabtec Internship -->
     <div class="project">
-        <h3>Summer Intern – Wabtec Corporation, Erie, PA</h3>
-        <p><strong>Dates:</strong> May 2022 – Aug 2022</p>
+        <h3>Summer Intern – Wabtec Corporation</h3>
         <ul>
             <li>Collaborated with engineering teams to implement process improvements, reduce manufacturing hours, and enhance product quality.</li>
-            <li>Utilized ANSYS Workbench to analyze stress differentials for propulsion components and implemented design modifications to meet performance standards.</li>
-            <li>Optimized FEA analysis for rotating impeller designs, eliminating complex manual operations and reducing manufacturing time by over 3 hours.</li>
-            <li>Resolved shop floor manufacturing issues by providing marked-up drawings and finalizing design documentation.</li>
+            <li>Utilized ANSYS Workbench for stress analysis and implemented design modifications to meet performance standards.</li>
+            <li>Optimized FEA analysis for rotating impeller designs, reducing manufacturing time by 3+ hours.</li>
+            <li>Resolved manufacturing issues with marked-up drawings and final documentation.</li>
         </ul>
     </div>
 </section>
 
-<section id="projects">
+<section id="projects" class="dark-section">
     <h2>Projects</h2>
+
     <div class="project">
         <h3>VEX Robotics World Championship</h3>
         <p>Led a 7-member team to design, build, and program a competition robot using Autodesk Inventor and AutoCAD, competing internationally.</p>
         <img src="vex_robotics.jpg" alt="VEX Robotics">
     </div>
+
+    <div class="project">
+        <h3>Manufacturing Process Optimization</h3>
+        <p>Conducted structural FEA, process efficiency improvements, and cost-saving manufacturing changes at Wabtec Corporation.</p>
+        <!-- No image -->
+    </div>
 </section>
 
-<section id="resume">
-    <h2>Resume</h2>
-    <p>You can download my full resume here:</p>
-    <a class="resume-link" href="resume.pdf" target="_blank">📄 Download Resume</a>
-</section>
-
-<section id="contact">
+<section id="contact" class="light-section contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:kyliu0208@gmail.com">kyliu0208@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/kenneth-liu28/" target="_blank">linkedin.com/in/kenneth-liu28</a></p>
-    <p>GitHub: <a href="https://github.com/kylu0208" target="_blank">github.com/kylu0208</a></p>
 </section>
-
-</div>
 
 <footer>
     <p>© 2025 Kenneth Liu. All rights reserved.</p>
