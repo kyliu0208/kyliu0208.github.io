@@ -26,7 +26,7 @@
             text-decoration: underline;
         }
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: auto;
             padding: 20px;
         }
@@ -41,6 +41,11 @@
             margin: 15px 0;
             border-radius: 8px;
             box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+        }
+        .project img, .project iframe {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
         }
         footer {
             background-color: #222;
@@ -61,6 +66,24 @@
         .resume-link:hover {
             background: #005fa3;
         }
+        details {
+            margin-top: 10px;
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        pre {
+            overflow-x: auto;
+            background: #1e1e1e;
+            color: #dcdcdc;
+            padding: 10px;
+            border-radius: 6px;
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body>
@@ -69,7 +92,7 @@
         <h1>Kenneth Liu</h1>
         <p>Mechanical Engineer | Data Enthusiast | Innovator</p>
         <nav>
-            <a href="#about">About</a>
+            <a href="#work">Work Experience</a>
             <a href="#projects">Projects</a>
             <a href="#resume">Resume</a>
             <a href="#contact">Contact</a>
@@ -77,36 +100,159 @@
     </header>
 
     <div class="container">
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Hi, I'm Kenneth Liu — a Mechanical Engineer with a passion for design, manufacturing, and technology-driven problem solving. I hold dual Master's degrees in Aerospace & Mechanical Engineering and Engineering Management from USC.</p>
-        </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
+        <!-- Work Experience Section -->
+        <section id="work">
+            <h2>Work Experience</h2>
 
+            <!-- Soft Robotics Research -->
             <div class="project">
-                <h3>Soft Robotics Motion Tracking</h3>
-                <p>Developed a Python-based AI vision tracking system to measure displacement of soft robotic structures in real-time using OpenCV and machine learning.</p>
+                <h3>Graduate Research Assistant – University of Southern California</h3>
+                <p><strong>Dates:</strong> Jan 2024 – May 2025</p>
+                <p>Developed a vision-based motion tracking system for soft robotic structures using OpenCV and depth camera calibration. Designed and implemented marker detection algorithms for real-time displacement measurement, enabling accurate analysis of soft robot dynamics. Co-authored a peer-reviewed research paper published in <em>Soft Robotics</em>.</p>
+                <p><a href="https://www.liebertpub.com/doi/10.1089/soro.2024.0158" target="_blank">📄 Read Research Paper</a></p>
+                <img src="soft_robotics.jpg" alt="Soft Robotics Marker Tracking Setup">
+
+                <!-- Expandable Code Viewer -->
+                <details>
+                    <summary>📜 View Marker Tracking Python Code</summary>
+                    <pre><code>
+import cv2
+import numpy as np
+
+# Intrinsic parameters for Depth camera
+depth_width = 640
+depth_height = 480
+depth_cx = 321.230285644531
+depth_cy = 235.318603515625
+depth_fx = 386.948791503906
+depth_fy = 386.948791503906
+
+# Intrinsic parameters for Color camera
+color_width = 640
+color_height = 480
+color_cx = 327.275268554688
+color_cy = 243.887390136719
+color_fx = 605.159729003906
+color_fy = 605.159729003906
+
+# Updated extrinsic matrix for calibration with the new values
+extrinsic_matrix = np.array([
+    [-0.9857623406634166, 0.006776133177524582, 0.16800801096656987, -151.2042777826623],
+    [-0.006258470419880429, 0.997016658174682, -0.07693253453639241, 184.149619812831],
+    [-0.16802809074016786, -0.07688866848470052, -0.9827790664136389, 463.3895364380981],
+    [0, 0, 0, 1]
+])
+
+def calculate_3d_coordinates(color_image, depth_image, cx_marker, cy_marker):
+    depth_value = depth_image[cy_marker, cx_marker]
+    x = (cx_marker - color_cx) * depth_value / color_fx
+    y = (cy_marker - color_cy) * depth_value / color_fy
+    z = depth_value
+    coordinates_homogeneous = np.dot(extrinsic_matrix, np.array([x, y, z, 1]))
+    calibrated_x, calibrated_y, calibrated_z = coordinates_homogeneous[:-1]
+    return calibrated_x, calibrated_y, calibrated_z
+
+def track_markers(color_image, depth_image):
+    hsv = cv2.cvtColor(color_image, cv2.COLOR_BGR2HSV)
+    lower_red = np.array([100, 100, 100])
+    upper_red = np.array([140, 255, 255])
+    mask = cv2.inRange(hsv, lower_red, upper_red)
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    markers_coordinates = []
+    if contours:
+        for i, contour in enumerate(contours):
+            area = cv2.contourArea(contour)
+            if area > 0:
+                M = cv2.moments(contour)
+                if M['m00'] != 0:
+                    cx_marker = int(M['m10'] / M['m00'])
+                    cy_marker = int(M['m01'] / M['m00'])
+                    cv2.circle(color_image, (cx_marker, cy_marker), 5, (0, 255, 0), -1)
+                    x, y, z = calculate_3d_coordinates(color_image, depth_image, cx_marker, cy_marker)
+                    markers_coordinates.append((x, y, z, cx_marker, cy_marker))
+                    cv2.putText(color_image, f"Marker{i+1}", (cx_marker - 20, cy_marker - 20),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+    cv2.imshow('Color Image with Markers', color_image)
+    cv2.waitKey(0)
+    return markers_coordinates
+
+def main():
+    start_color_path = 'path_to_your_file'
+    end_color_path = 'path_to_your_file'
+    start_depth_path = 'path_to_your_file'
+    end_depth_path = 'path_to_your_file'
+
+    start_color_image = cv2.imread(start_color_path)
+    end_color_image = cv2.imread(end_color_path)
+    start_depth_image = cv2.imread(start_depth_path, cv2.IMREAD_UNCHANGED).astype(np.float32)
+    end_depth_image = cv2.imread(end_depth_path, cv2.IMREAD_UNCHANGED).astype(np.float32)
+
+    start_markers_coordinates = track_markers(start_color_image, start_depth_image)
+    if not start_markers_coordinates:
+        print("No red markers found in the start frame.")
+        exit()
+
+    end_markers_coordinates = track_markers(end_color_image, end_depth_image)
+    if not end_markers_coordinates:
+        print("No red markers found in the end frame.")
+        exit()
+
+    for i, start_marker_coordinates in enumerate(start_markers_coordinates):
+        start_x, start_y, start_z, start_cx_marker, start_cy_marker = start_marker_coordinates
+        start_depth_value = start_depth_image[start_cy_marker, start_cx_marker]
+        for j, end_marker_coordinates in enumerate(end_markers_coordinates):
+            end_x, end_y, end_z, end_cx_marker, end_cy_marker = end_marker_coordinates
+            end_depth_value = end_depth_image[end_cy_marker, end_cx_marker]
+            displacement_x = end_x - start_x
+            displacement_y = end_y - start_y
+            displacement_z = end_z - start_z
+            print(f"Displacement (X, Y, Z) in mm from Marker{i+1} at ({start_cx_marker}, {start_cy_marker}) "
+                  f"to Marker{j+1} at ({end_cx_marker}, {end_cy_marker}):")
+            print(f"   Marker1: ({displacement_x}, {displacement_y}, {displacement_z}), "
+                  f"Start Depth: {start_depth_value}, End Depth: {end_depth_value}")
+
+    cv2.imshow('End Color Image with Markers', end_color_image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    main()
+                    </code></pre>
+                </details>
             </div>
 
+            <!-- Wabtec Internship -->
+            <div class="project">
+                <h3>Summer Intern – Wabtec Corporation, Erie, PA</h3>
+                <p><strong>Dates:</strong> May 2022 – Aug 2022</p>
+                <ul>
+                    <li>Collaborated with engineering teams to implement process improvements, reduce manufacturing hours, and enhance product quality.</li>
+                    <li>Utilized ANSYS Workbench to analyze stress differentials for propulsion components and implemented design modifications to meet performance standards.</li>
+                    <li>Optimized FEA analysis for rotating impeller designs, reducing manufacturing time by over 3 hours.</li>
+                    <li>Resolved shop floor manufacturing issues by providing marked-up drawings and finalizing design documentation.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
             <div class="project">
                 <h3>VEX Robotics World Championship</h3>
                 <p>Led a 7-member team to design, build, and program a competition robot using Autodesk Inventor and AutoCAD, competing internationally.</p>
-            </div>
-
-            <div class="project">
-                <h3>Manufacturing Process Optimization</h3>
-                <p>Interned at Wabtec Corporation, conducting structural FEA, process efficiency improvements, and cost-saving manufacturing changes.</p>
+                <img src="vex_robotics.jpg" alt="VEX Robotics">
             </div>
         </section>
 
+        <!-- Resume Section -->
         <section id="resume">
             <h2>Resume</h2>
             <p>You can download my full resume here:</p>
             <a class="resume-link" href="resume.pdf" target="_blank">📄 Download Resume</a>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact">
             <h2>Contact</h2>
             <p>Email: <a href="mailto:kyliu0208@gmail.com">kyliu0208@gmail.com</a></p>
