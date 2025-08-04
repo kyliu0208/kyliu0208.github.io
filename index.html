@@ -42,10 +42,13 @@
             border-radius: 8px;
             box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
         }
+        /* Smaller image */
         .project img, .project iframe {
-            max-width: 100%;
+            max-width: 500px;
+            width: 100%;
             border-radius: 8px;
-            margin-top: 10px;
+            margin: 10px auto;
+            display: block;
         }
         footer {
             background-color: #222;
@@ -88,35 +91,39 @@
 </head>
 <body>
 
-    <header>
-        <h1>Kenneth Liu</h1>
-        <p>Mechanical Engineer | Data Enthusiast | Innovator</p>
-        <nav>
-            <a href="#work">Work Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#resume">Resume</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+<header>
+    <h1>Kenneth Liu</h1>
+    <p>Mechanical Engineer | Data Enthusiast | Innovator</p>
+    <nav>
+        <a href="#work">Work Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-    <div class="container">
+<div class="container">
 
-        <!-- Work Experience Section -->
-        <section id="work">
-            <h2>Work Experience</h2>
+<section id="work">
+    <h2>Work Experience</h2>
 
-            <!-- Soft Robotics Research -->
-            <div class="project">
-                <h3>Graduate Research Assistant – University of Southern California</h3>
-                <p><strong>Dates:</strong> Jan 2024 – May 2025</p>
-                <p>Developed a vision-based motion tracking system for soft robotic structures using OpenCV and depth camera calibration. Designed and implemented marker detection algorithms for real-time displacement measurement, enabling accurate analysis of soft robot dynamics. Co-authored a peer-reviewed research paper published in <em>Soft Robotics</em>.</p>
-                <p><a href="https://www.liebertpub.com/doi/10.1089/soro.2024.0158" target="_blank">📄 Read Research Paper</a></p>
-                <img src="soft_robotics.jpg" alt="Soft Robotics Marker Tracking Setup">
+    <!-- Soft Robotics Research -->
+    <div class="project">
+        <h3>Graduate Research Assistant – USC Zhao Research Group, Department of Aerospace and Mechanical Engineering</h3>
+        <p><strong>Dates:</strong> Sep 2023 – May 2025</p>
+        <ul>
+            <li>Assisted a professor on a soft robotics project by developing a Python-based marker motion tracking system.</li>
+            <li>Developed and deployed machine learning algorithms to improve motion tracking accuracy, automated manual processes, and enhanced overall system efficiency.</li>
+            <li>Coordinated task schedules, project progress presentations, and publications to ensure timely deliverables.</li>
+            <li>Streamlined motion tracking workflow, reduced processing time by over 2 hours, enhanced accuracy by 95%.</li>
+            <li>Refined and tested an OpenCV-based motion tracking system, achieved sub-millimeter precision of 0.01 mm.</li>
+        </ul>
+        <p><a href="https://www.liebertpub.com/doi/10.1089/soro.2024.0158" target="_blank">📄 Read Research Paper</a></p>
+        <img src="soft_robotics.jpg" alt="Soft Robotics Marker Tracking Setup">
 
-                <!-- Expandable Code Viewer -->
-                <details>
-                    <summary>📜 View Marker Tracking Python Code</summary>
-                    <pre><code>
+        <details>
+            <summary>📜 View Marker Tracking Python Code</summary>
+            <pre><code>
 import cv2
 import numpy as np
 
@@ -218,52 +225,50 @@ def main():
 
 if __name__ == "__main__":
     main()
-                    </code></pre>
-                </details>
-            </div>
-
-            <!-- Wabtec Internship -->
-            <div class="project">
-                <h3>Summer Intern – Wabtec Corporation, Erie, PA</h3>
-                <p><strong>Dates:</strong> May 2022 – Aug 2022</p>
-                <ul>
-                    <li>Collaborated with engineering teams to implement process improvements, reduce manufacturing hours, and enhance product quality.</li>
-                    <li>Utilized ANSYS Workbench to analyze stress differentials for propulsion components and implemented design modifications to meet performance standards.</li>
-                    <li>Optimized FEA analysis for rotating impeller designs, reducing manufacturing time by over 3 hours.</li>
-                    <li>Resolved shop floor manufacturing issues by providing marked-up drawings and finalizing design documentation.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>VEX Robotics World Championship</h3>
-                <p>Led a 7-member team to design, build, and program a competition robot using Autodesk Inventor and AutoCAD, competing internationally.</p>
-                <img src="vex_robotics.jpg" alt="VEX Robotics">
-            </div>
-        </section>
-
-        <!-- Resume Section -->
-        <section id="resume">
-            <h2>Resume</h2>
-            <p>You can download my full resume here:</p>
-            <a class="resume-link" href="resume.pdf" target="_blank">📄 Download Resume</a>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:kyliu0208@gmail.com">kyliu0208@gmail.com</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/kenneth-liu28/" target="_blank">linkedin.com/in/kenneth-liu28</a></p>
-            <p>GitHub: <a href="https://github.com/kylu0208" target="_blank">github.com/kylu0208</a></p>
-        </section>
+            </code></pre>
+        </details>
     </div>
 
-    <footer>
-        <p>© 2025 Kenneth Liu. All rights reserved.</p>
-    </footer>
+    <!-- Wabtec Internship -->
+    <div class="project">
+        <h3>Summer Intern – Wabtec Corporation, Erie, PA</h3>
+        <p><strong>Dates:</strong> May 2022 – Aug 2022</p>
+        <ul>
+            <li>Collaborated with engineering teams to implement process improvements, reduce manufacturing hours, and enhance product quality.</li>
+            <li>Utilized ANSYS Workbench to analyze stress differentials for propulsion components and implemented design modifications to meet performance standards.</li>
+            <li>Optimized FEA analysis for rotating impeller designs, eliminating complex manual operations and reducing manufacturing time by over 3 hours.</li>
+            <li>Resolved shop floor manufacturing issues by providing marked-up drawings and finalizing design documentation.</li>
+        </ul>
+    </div>
+</section>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+        <h3>VEX Robotics World Championship</h3>
+        <p>Led a 7-member team to design, build, and program a competition robot using Autodesk Inventor and AutoCAD, competing internationally.</p>
+        <img src="vex_robotics.jpg" alt="VEX Robotics">
+    </div>
+</section>
+
+<section id="resume">
+    <h2>Resume</h2>
+    <p>You can download my full resume here:</p>
+    <a class="resume-link" href="resume.pdf" target="_blank">📄 Download Resume</a>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:kyliu0208@gmail.com">kyliu0208@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/kenneth-liu28/" target="_blank">linkedin.com/in/kenneth-liu28</a></p>
+    <p>GitHub: <a href="https://github.com/kylu0208" target="_blank">github.com/kylu0208</a></p>
+</section>
+
+</div>
+
+<footer>
+    <p>© 2025 Kenneth Liu. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
