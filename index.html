@@ -41,11 +41,11 @@ section {
 }
 
 .dark-section {
-    background-color: #ffffff; /* White */
+    background-color: #ffffff;
 }
 
 .light-section {
-    background-color: #f8f8f8; /* Light Gray */
+    background-color: #f8f8f8;
 }
 
 .about {
@@ -59,11 +59,6 @@ section {
 
 h3 {
     color: #0077cc;
-}
-
-ul {
-    list-style: disc;
-    padding-left: 20px;
 }
 
 .icons {
@@ -83,6 +78,14 @@ ul {
     border: 1px solid #ddd;
 }
 .project img {
+    max-width: 500px;
+    width: 100%;
+    margin: 10px auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.logo-image {
     max-width: 500px;
     width: 100%;
     margin: 10px auto;
@@ -153,21 +156,17 @@ footer {
     <div class="two-columns">
         <div class="column">
             <h3>Interests</h3>
-            <ul>
-                <li>Robotics & Automation</li>
-                <li>Manufacturing Innovation</li>
-                <li>Mechanical Design & CAD Modeling</li>
-                <li>Structural FEA Analysis</li>
-                <li>Product Development & Prototyping</li>
-            </ul>
+            Robotics & Automation<br>
+            Manufacturing Innovation<br>
+            Mechanical Design & CAD Modeling<br>
+            Structural FEA Analysis<br>
+            Product Development & Prototyping
         </div>
         <div class="column">
             <h3>Education</h3>
-            <ul>
-                <li>USC, M.S. Mechanical Engineering (2023–2025)</li>
-                <li>USC, M.S. Engineering Management (2023–2025)</li>
-                <li>NYU, B.S. Mechanical Engineering (2019–2023)</li>
-            </ul>
+            USC, M.S. Mechanical Engineering (2023–2025)<br>
+            USC, M.S. Engineering Management (2023–2025)<br>
+            NYU, B.S. Mechanical Engineering (2019–2023)
         </div>
     </div>
 
@@ -182,6 +181,7 @@ footer {
 
     <div class="project">
         <h3>Graduate Research Assistant – USC Zhao Research Group</h3>
+        <p><em>Sep 2023 – May 2025</em></p>
         <ul>
             <li>Assisted a professor on a soft robotics project by developing a Python-based marker motion tracking system.</li>
             <li>Developed and deployed machine learning algorithms to improve motion tracking accuracy, automate processes, and enhance efficiency.</li>
@@ -302,12 +302,14 @@ if __name__ == "__main__":
 
     <div class="project">
         <h3>Summer Intern – Wabtec Corporation</h3>
+        <p><em>May 2022 – Aug 2022</em></p>
         <ul>
             <li>Collaborated with engineering teams to implement process improvements, reduce manufacturing hours, and enhance product quality.</li>
             <li>Utilized ANSYS Workbench for stress analysis and implemented design modifications to meet performance standards.</li>
             <li>Optimized FEA analysis for rotating impeller designs, reducing manufacturing time by 3+ hours.</li>
             <li>Resolved manufacturing issues with marked-up drawings and final documentation.</li>
         </ul>
+        <img src="wabtec_logo.png" alt="Wabtec Logo" class="logo-image">
     </div>
 </section>
 
@@ -316,20 +318,21 @@ if __name__ == "__main__":
 
     <div class="project">
         <h3>VEX Robotics World Championship</h3>
-        <p>Led a 7-member team to design, build, and program a competition robot using Autodesk Inventor and AutoCAD, competing internationally.</p>
-        <img src="vex_robotics.jpg" alt="VEX Robotics">
-    </div>
-
-    <div class="project">
-        <h3>Manufacturing Process Optimization</h3>
-        <p>Conducted structural FEA, process efficiency improvements, and cost-saving manufacturing changes at Wabtec Corporation.</p>
-        <!-- No image -->
+        <p><em>Sep 2017 – May 2018</em></p>
+        <ul>
+            <li>Led a 7-member team to design, build, and program a competition robot using Autodesk Inventor and AutoCAD, competing internationally.</li>
+            <li>Competed with self-built robots, exchanging ideas and building relationships with teams from around the world.</li>
+            <li>Created detailed CAD drawings and managed Bill of Materials (BOM) for robot parts to ensure accurate manufacturing.</li>
+            <li>Coordinated inventory and part tracking to maintain readiness for competition builds.</li>
+        </ul>
+        <img src="vex_robotics.jpg" alt="VEX Robotics" style="width:300px;">
     </div>
 </section>
 
 <section id="contact" class="light-section contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:kyliu0208@gmail.com">kyliu0208@gmail.com</a></p>
+    <p>Phone: +1 (516) 996-9268</p>
 </section>
 
 <footer>
